@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../Domain/Domain.csproj" />
+    <ProjectReference Include="../DomainRepositories/DomainRepositories.csproj" />
+    <ProjectReference Include="../EFCore/EFCore.csproj" />
+    <ProjectReference Include="../ServiceImplementations/ServiceImplementations.csproj" />
     <ProjectReference Include="../ServiceInterfaces/ServiceInterfaces.csproj" />
   </ItemGroup>
 
