@@ -1,0 +1,575 @@
+# EditorConfigの設定ファイル
+
+# 一番上の階層のEditorConfigファイルを使う
+root = true
+
+# CSharpのコードスタイル設定
+[*]
+# スペースでインデント
+indent_style = space
+
+
+# CSharpのコードスタイル設定
+[*.cs]
+
+# インデントサイズを4に設定
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+
+# --------------------------------------------------
+# インタフェースの命名規則
+# - style: pascal_case
+# - prefix: I
+# --------------------------------------------------
+
+# インタフェースのスタイルを定義
+dotnet_naming_style.interface_style.capitalization = pascal_case
+dotnet_naming_style.interface_style.required_prefix = I
+
+# インタフェースの条件を定義
+dotnet_naming_symbols.interface_symbol.applicable_kinds = interface
+
+# インタフェースにルールを適用
+dotnet_naming_rule.interface_rule.severity = error
+dotnet_naming_rule.interface_rule.symbols = interface_symbol
+dotnet_naming_rule.interface_rule.style = interface_style
+
+
+# --------------------------------------------------
+# プライベートではない静的/読取専用フィールドの命名規則
+# - style: pascal_case
+# --------------------------------------------------
+
+# プライベートではない静的フィールドのスタイルを定義
+dotnet_naming_style.non_private_static_field_style.capitalization = pascal_case
+
+# プライベートではない静的フィールドの条件を定義
+dotnet_naming_symbols.non_private_static_field_symbol.applicable_kinds = field
+dotnet_naming_symbols.non_private_static_field_symbol.applicable_accessibilities = public, protected, internal, protected_internal, private_protected
+dotnet_naming_symbols.non_private_static_field_symbol.required_modifiers = static, readonly
+
+# プライベートではない静的フィールドにルールを適用
+dotnet_naming_rule.non_private_static_field_rule.severity = error
+dotnet_naming_rule.non_private_static_field_rule.symbols = non_private_static_field_symbol
+dotnet_naming_rule.non_private_static_field_rule.style = non_private_static_field_style
+
+
+# --------------------------------------------------
+# 静的フィールドの命名規則
+# - style: camel_case
+# - prefix: s_
+# --------------------------------------------------
+
+# 静的フィールドのスタイルを定義
+dotnet_naming_style.static_field_style.capitalization = camel_case
+
+# 静的フィールドの条件を定義
+dotnet_naming_symbols.static_field_symbol.applicable_accessibilities = public, protected, internal, protected_internal, private_protected
+dotnet_naming_symbols.static_field_symbol.applicable_kinds = field
+dotnet_naming_symbols.static_field_symbol.required_modifiers = static
+
+# 静的フィールドにルールを適用
+dotnet_naming_rule.static_field_rule.severity = error
+dotnet_naming_rule.static_field_rule.symbols = static_field_symbol
+dotnet_naming_rule.static_field_rule.style = static_field_style
+
+
+# --------------------------------------------------
+# クラスとメソッドの命名規則
+# - style: pascal_case
+# --------------------------------------------------
+
+# クラスとメソッドのスタイルを定義
+dotnet_naming_style.class_and_method_style.capitalization = pascal_case
+
+# クラスとメソッドの条件を定義
+dotnet_naming_symbols.class_and_method_symbol.applicable_kinds = class, method
+
+# クラスとメソッドにルールを適用
+dotnet_naming_rule.class_and_method_rule.severity = error
+dotnet_naming_rule.class_and_method_rule.symbols = class_and_method_symbol
+dotnet_naming_rule.class_and_method_rule.style = class_and_method_style
+
+
+# --------------------------------------------------
+# パラメータとローカル変数の命名規則
+# - style: camel_case
+# --------------------------------------------------
+
+# パラメータとローカル変数のスタイルを定義
+dotnet_naming_style.parameter_and_local_style.capitalization = camel_case
+
+# パラメータとローカル変数の条件を定義
+dotnet_naming_symbols.parameter_and_local_symbol.applicable_kinds = parameter, local
+
+# パラメータとローカル変数にルールを適用
+dotnet_naming_rule.parameter_and_local_rule.severity = error
+dotnet_naming_rule.parameter_and_local_rule.symbols = parameter_and_local_symbol
+dotnet_naming_rule.parameter_and_local_rule.style = parameter_and_local_style
+
+
+# --------------------------------------------------
+# 定数名の命名規則
+# - style: pascal_case
+# --------------------------------------------------
+
+# 定数名のスタイルを定義
+dotnet_naming_style.constants_style.capitalization = pascal_case
+
+# 定数名の条件を定義
+dotnet_naming_symbols.constants_symbol.applicable_kinds = field, local
+dotnet_naming_symbols.constants_symbol.required_modifiers = const
+
+# 定数名にルールを適用
+dotnet_naming_rule.constants_rule.severity = error
+dotnet_naming_rule.constants_rule.symbols = constants_symbol
+dotnet_naming_rule.constants_rule.style = constants_style
+
+
+# --------------------------------------------------
+# プライベートインスタンスフィールドの命名規則
+# - style: camel_case
+# - prefix: _
+# --------------------------------------------------
+
+# プライベートインスタンスフィールドのスタイルを定義
+dotnet_naming_style.private_instance_fields_style.capitalization = camel_case
+dotnet_naming_style.private_instance_fields_style.required_prefix = _
+
+# プライベートインスタンスフィールドの条件を定義
+dotnet_naming_symbols.private_instance_fields_symbol.applicable_kinds = field
+dotnet_naming_symbols.private_instance_fields_symbol.applicable_accessibilities = private
+
+# インスタンスフィールドにルールを適用
+dotnet_naming_rule.private_instance_fields_rule.severity = error
+dotnet_naming_rule.private_instance_fields_rule.symbols = private_instance_fields_symbol
+dotnet_naming_rule.private_instance_fields_rule.style = private_instance_fields_style
+
+
+# --------------------------------------------------
+# asyncメソッドの命名規則
+# - style: pascal_case
+# - suffix: Async
+# --------------------------------------------------
+
+# asyncメソッドのスタイルを定義
+dotnet_naming_style.async_method_style.capitalization = pascal_case
+dotnet_naming_style.async_method_style.required_suffix = Async
+
+# asyncメソッドの条件を定義
+dotnet_naming_symbols.async_method_symbol.applicable_kinds = method
+dotnet_naming_symbols.async_method_symbol.required_modifiers = async
+
+# asyncメソッドにルールを適用
+dotnet_naming_rule.async_method_rule.severity = error
+dotnet_naming_rule.async_method_rule.symbols = async_method_symbol
+dotnet_naming_rule.async_method_rule.style = async_method_style
+
+
+# --------------------------------------------------
+# usingをソートする
+# --------------------------------------------------
+
+# using System*をアルファベット順に並び替える
+dotnet_sort_system_directives_first = true
+# usingをグループごとに分ける
+dotnet_separate_import_directive_groups = false
+
+
+# 参考: https://learn.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options#csharp_new_line_before_open_bracehttps://learn.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/style-rules/csharp-formatting-options
+# --------------------------------------------------
+# 新しい行を追加する時の設定
+# --------------------------------------------------
+
+# { の前に新しい行を追加する
+csharp_new_line_before_open_brace = all
+# 新しい行にelseを書く
+csharp_new_line_before_else = true
+# 新しい行にcatchを書く
+csharp_new_line_before_catch = true
+# 新しい行にfinallyを書く
+csharp_new_line_before_finally = true
+# オブジェクト初期化子のメンバを別の行に配置する
+csharp_new_line_before_members_in_object_initializers = true
+# 匿名型のメンバを別の行に配置する
+csharp_new_line_before_members_in_anonymous_types = true
+# クエリ式の句の要素を別の行に配置する
+csharp_new_line_between_query_expression_clauses = true
+# 複数の空白行を許さない
+dotnet_style_allow_multiple_blank_lines_experimental = false:warning
+
+
+# --------------------------------------------------
+# インデントに関する設定
+# --------------------------------------------------
+
+# case内にインデントをつける
+csharp_indent_case_contents = true
+# switch内にインデントをつける
+csharp_indent_switch_labels = true
+# GOTOなどのラベルを左端に書く
+csharp_indent_labels = flush_left
+# ブロック内にインデントをつける
+csharp_indent_block_contents = true
+# {} にインデントをつける
+csharp_indent_braces = false
+# caseに {} をつけてインデントする
+csharp_indent_case_contents_when_block = true
+
+
+# --------------------------------------------------
+# スペースに関する設定
+# --------------------------------------------------
+
+# キャストと値の間にスペースを空ける
+csharp_space_after_cast = false
+# forなどの制御文の後にスペースを空ける
+csharp_space_after_keywords_in_control_flow_statements = true
+# () 内のスペースの設定: false → () 内にスペースを空けない
+csharp_space_between_parentheses = false
+# 型宣言の際にコロンの前にスペースを空ける
+csharp_space_before_colon_in_inheritance_clause = true
+# 型宣言の際にコロンの後にスペースを空ける
+csharp_space_after_colon_in_inheritance_clause = true
+# 二項演算の前後にスペースを空ける
+csharp_space_around_binary_operators = before_and_after
+# メソッド宣言時の () 内の前後にスペースを空ける
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+# メソッド宣言時に引数が空の場合、() 内の前後にスペースを空ける
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+# メソッド宣言時にメソッド名と () の間にスペースを空ける
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+# メソッド呼び出しの () 内の前後にスペースを空ける
+csharp_space_between_method_call_parameter_list_parentheses = false
+# メソッド呼び出し時に引数が空の場合、() 内の前後にスペースを空ける
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+# メソッド呼び出し時にメソッド名と () の間にスペースを空ける
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+# コンマの後にスペースを空ける
+csharp_space_after_comma = true
+# コンマの前にスペースを空ける
+csharp_space_before_comma = false
+# ドットの後にスペースを空ける
+csharp_space_after_dot = false
+# ドットの前にスペースを空ける
+csharp_space_before_dot = false
+# for文の各セミコロンの後にスペースを空ける
+csharp_space_after_semicolon_in_for_statement = true
+# for文の各セミコロンの前にスペースを空ける
+csharp_space_before_semicolon_in_for_statement = false
+# 宣言文の余分なスペースを削除する
+csharp_space_around_declaration_statements = true
+# [] の前にスペースを空ける
+csharp_space_before_open_square_brackets = false
+# [] の間にスペースを空ける
+csharp_space_between_empty_square_brackets = false
+# 空ではない [] 内の前後にスペースを空ける
+csharp_space_between_square_brackets = false
+
+
+# --------------------------------------------------
+# 折り返しに関する設定
+# --------------------------------------------------
+
+# 1行に複数の文・宣言を許可する
+csharp_preserve_single_line_statements = false
+# コードブロックを1行に書くことを許可する
+csharp_preserve_single_line_blocks = true
+
+
+# --------------------------------------------------
+# 不要なthisに関する設定
+# --------------------------------------------------
+
+# thisをフィールドの前に書くか
+dotnet_style_qualification_for_field = false:warning
+# thisをプロパティの前に書くか
+dotnet_style_qualification_for_property = false:warning
+# thisをメソッドの前に書くか
+dotnet_style_qualification_for_method = false:warning
+# thisをイベントの前に書くか
+dotnet_style_qualification_for_event = false:warning
+
+
+# --------------------------------------------------
+# 明示的な型を使うかvarを使うかの設定
+# --------------------------------------------------
+
+# 組み込み型を宣言する時はvarを使う
+csharp_style_var_for_built_in_types = true:warning
+# 宣言式の右側で型が示されている時はvarを使う
+csharp_style_var_when_type_is_apparent = true:warning
+# 別のコードスタイルでオーバーライドされない限り、明示的な型ではなくvarを使う
+csharp_style_var_elsewhere = true:warning
+
+
+# --------------------------------------------------
+# 明示的な型を使うかvarを使うかの設定
+# --------------------------------------------------
+
+# 組み込み型を宣言する時はvarを使う
+csharp_style_var_for_built_in_types = true:warning
+# 宣言式の右側で型が示されている時はvarを使う
+csharp_style_var_when_type_is_apparent = true:warning
+# 別のコードスタイルでオーバーライドされない限り、明示的な型ではなくvarを使う
+csharp_style_var_elsewhere = true:warning
+
+
+# --------------------------------------------------
+# コードブロックを囲う {} の設定
+# --------------------------------------------------
+
+# 1行であっても {} を使用する
+csharp_prefer_braces = true:warning
+
+
+# --------------------------------------------------
+# throw式の使用の設定
+# --------------------------------------------------
+
+# throw文の代わりにthrow式を使用する
+csharp_style_throw_expression = true:warning
+
+
+# --------------------------------------------------
+# オブジェクト初期化子の使用の設定
+# --------------------------------------------------
+
+# 可能であればオブジェクト初期化子を使用する
+dotnet_style_object_initializer = true:warning
+
+
+# --------------------------------------------------
+# インライン変数宣言の使用の設定
+# --------------------------------------------------
+
+# 可能であればメソッド呼び出しの引数リスト内でout変数をインライン宣言する
+csharp_style_inlined_variable_declaration = true:warning
+
+
+# --------------------------------------------------
+# 型とnullチェックの設定
+# --------------------------------------------------
+
+# オブジェクトが特定の型かチェックする際にパターンマッチングを使用する
+csharp_style_pattern_matching_over_as_with_null_check = true:warning
+# isとキャストの代わりにパターンマッチングを使用する
+csharp_style_pattern_matching_over_is_with_cast_check = true:warning
+# 可能な場合はパターンマッチングコンストラクトを使用する
+csharp_style_prefer_pattern_matching = true:warning
+
+
+# --------------------------------------------------
+# 式本体を使うかブロック文を使うか
+# --------------------------------------------------
+
+# コンストラクタで式本体を優先するか
+csharp_style_expression_bodied_constructors = true:warning
+# メソッドで式本体を優先するか
+csharp_style_expression_bodied_methods = true:warning
+# 演算子のオーバーロードで式本体を優先するか
+csharp_style_expression_bodied_operators = true:warning
+# プロパティで式本体を優先するか
+csharp_style_expression_bodied_properties = true:warning
+# インデクサで式本体を優先するか
+csharp_style_expression_bodied_indexers = true:warning
+# アクセサで式本体を優先するか
+csharp_style_expression_bodied_accessors = true:warning
+# ローカル関数で式本体を優先する
+csharp_style_expression_bodied_local_functions = true:warning
+
+
+# --------------------------------------------------
+# コレクションの初期化に関する設定
+# --------------------------------------------------
+
+# コレクション初期化子を使用する
+dotnet_style_collection_initializer = true:warning
+
+
+# --------------------------------------------------
+# nullに関する設定
+# --------------------------------------------------
+
+# null合体演算子を優先する
+dotnet_style_coalesce_expression = true:warning
+# 可能であればnull条件演算子を使用する
+dotnet_style_null_propagation = true:warning
+# is nullチェックを優先する
+dotnet_style_prefer_is_null_check_over_reference_equality_method = true:warning
+# 型チェックよりもnullチェックを優先する
+csharp_style_prefer_null_check_over_type_check = true:warning
+
+
+# --------------------------------------------------
+# 自動実装プロパティの設定
+# --------------------------------------------------
+
+# 自動実装プロパティを使用する
+dotnet_style_prefer_auto_properties = true:warning
+
+
+# --------------------------------------------------
+# タプルの設定
+# --------------------------------------------------
+
+# 明示的なタプル名を使用する
+dotnet_style_explicit_tuple_names = true:warning
+# 推論されたタプル要素名が優先される
+dotnet_style_prefer_inferred_tuple_names = true:warning
+# swapにタプルを使用する
+csharp_style_prefer_tuple_swap = true:warning
+
+
+# --------------------------------------------------
+# defaultの設定
+# --------------------------------------------------
+
+# default(T)よりdefaultを優先する
+csharp_prefer_simple_default_expression = true:warning
+
+
+# --------------------------------------------------
+# ラムダ式の設定
+# --------------------------------------------------
+
+# 匿名関数よりローカル関数を優先する
+csharp_style_prefer_local_over_anonymous_function = true:warning
+# ラムダ式本体を使用する
+csharp_style_expression_bodied_lambdas = true:warning
+# 不要なラムダ式を削除する
+csharp_style_prefer_method_group_conversion = true:warning
+
+
+# --------------------------------------------------
+# 変数宣言に関する設定
+# --------------------------------------------------
+
+# 修飾子の順序を指定する
+csharp_preferred_modifier_order = public, private, protected, internal, file, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, required, volatile, async
+# アクセシビリティ修飾子を指定する
+dotnet_style_require_accessibility_modifiers = always:warning
+# 分解された変数宣言を優先する
+csharp_style_deconstructed_variable_declaration = true:warning
+# readonlyにしてもいい変数はreadonlyにする
+dotnet_style_readonly_field = true:warning
+# readonlyにしてもいい構造体はreadonlyにする
+csharp_style_prefer_readonly_struct = true:warning
+# readonlyにしてもいいメンバはreadonlyにする
+csharp_style_prefer_readonly_struct_member = true:warning
+# ローカル関数をstaticとマークする
+csharp_prefer_static_local_function = true:suggestion
+# 補完文字列を簡略化する
+dotnet_style_prefer_simplified_interpolation = true
+# new式を簡略化する
+csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
+# プライマリコンストラクタの使用を優先しない
+csharp_style_prefer_primary_constructors = false
+# 配列にコレクション式を使用しない
+dotnet_style_prefer_collection_expression = false
+
+
+# --------------------------------------------------
+# 演算に関する設定
+# --------------------------------------------------
+
+# 三項演算子を使った代入を優先する
+dotnet_style_prefer_conditional_expression_over_assignment = true:warning
+# 三項演算子を使ったreturnを優先する
+dotnet_style_prefer_conditional_expression_over_return = true:warning
+# 複合代入式を優先する
+dotnet_style_prefer_compound_assignment = true:warning
+# インデックス演算子を優先する
+csharp_style_prefer_index_operator = true:warning
+# 範囲演算子を優先する
+csharp_style_prefer_range_operator = true:warning
+# switch文よりswitch式を優先する
+csharp_style_prefer_switch_expression = true:warning
+# 条件式を簡略化する
+dotnet_style_prefer_simplified_boolean_expressions = true:warning
+# 可能な場合はnotパターンを使用する
+csharp_style_prefer_not_pattern = true:warning
+# 拡張プロパティパターンを優先する
+csharp_style_prefer_extended_property_pattern = true:warning
+
+
+
+# --------------------------------------------------
+# () に関する設定
+# --------------------------------------------------
+
+# 算術演算子の優先順位を明確にするために () を使用する
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
+# 関係演算子の優先順位を明確にするために () を使用する
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
+# &&, ||, ??の優先順位を明確にするために () を使用する
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
+# その他の演算子の優先順位を明確にするために () を使用する
+dotnet_style_parentheses_in_other_operators = always_for_clarity:warning
+
+
+# --------------------------------------------------
+# 言語キーワードに関する設定
+# --------------------------------------------------
+
+# 可能であれば言語キーワードを使用する
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
+
+
+# --------------------------------------------------
+# usingに関する設定
+# --------------------------------------------------
+
+# {} を使わないusing宣言を使う
+csharp_prefer_simple_using_statement = true:warning
+# usingを名前空間の外側に書く
+csharp_using_directive_placement = outside_namespace:warning
+
+
+# --------------------------------------------------
+# 抑制の設定
+# --------------------------------------------------
+
+# 不要な抑制を削除する
+dotnet_remove_unnecessary_suppression_exclusions = all:warning
+
+
+# --------------------------------------------------
+# 名前空間の設定
+# --------------------------------------------------
+
+# 名前空間とフォルダ構造を一致させる (詳細はhttps://learn.microsoft.com/ja-jp/dotnet/fundamentals/code-analysis/style-rules/ide0130#dotnet_style_namespace_match_folder)
+dotnet_style_namespace_match_folder = true:error
+# 名前空間の宣言はファイルスコープにする
+csharp_style_namespace_declarations = file_scoped:warning
+
+
+# --------------------------------------------------
+# 最上位レベルのステートメントの設定
+# --------------------------------------------------
+
+# 最上位レベルのステートメントに設定しない
+csharp_style_prefer_top_level_statements = false
+
+
+# --------------------------------------------------
+# キャストの設定
+# --------------------------------------------------
+
+# foreachで明示的なキャストを推奨しない
+dotnet_style_prefer_foreach_explicit_cast_in_source = when_strongly_typed
+# byte配列よりもUTF-8文字列リテラルを優先する
+csharp_style_prefer_utf8_string_literals = true:warning
+
+
+# --------------------------------------------------
+# 警告の設定
+# --------------------------------------------------
+
+# 名前空間を宣言してないときの警告をエラーにする
+dotnet_diagnostic.CA1050.severity = error
