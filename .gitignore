@@ -54,6 +54,6 @@ TestResult.xml
 nunit-*.xml
 
 # appsettigs.json
-appsettinngs.json
+appsettings.json
 appsettings.*.json
 appsettings.Development.json
