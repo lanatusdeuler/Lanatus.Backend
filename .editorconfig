@@ -453,6 +453,8 @@ csharp_style_prefer_method_group_conversion = true:warning
 csharp_preferred_modifier_order = public, private, protected, internal, file, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, required, volatile, async
 # アクセシビリティ修飾子を指定する
 dotnet_style_require_accessibility_modifiers = always:warning
+# インターフェイス内のアクセシビリティ修飾子は指定しない
+dotnet_diagnostic.IDE0040.severity = none
 # 分解された変数宣言を優先する
 csharp_style_deconstructed_variable_declaration = true:warning
 # readonlyにしてもいい変数はreadonlyにする
