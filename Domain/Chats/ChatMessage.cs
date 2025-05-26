@@ -1,5 +1,3 @@
-using System;
-
 namespace Domain.Chats;
 
 public class ChatMessage

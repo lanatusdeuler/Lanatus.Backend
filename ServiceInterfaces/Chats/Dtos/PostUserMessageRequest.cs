@@ -2,7 +2,7 @@ using System;
 
 namespace ServiceInterfaces.Chats.Dtos;
 
-public class PostUserMessageRequest
+public class PostUserMessageInput
 {
 
 }

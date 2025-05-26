@@ -10,7 +10,7 @@ namespace ServiceImplementations.Chats;
 /// <summary>
 /// チャット関連のサービス
 /// </summary>
-public class ChatsService : IChatsService
+public class ChatsService : IChatService
 {
     private readonly IChatRoomRepository _chatRoomRepository;
     private readonly INotificationHandler<UserMessagePosted> _notificationHandler;
@@ -34,7 +34,7 @@ public class ChatsService : IChatsService
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<PostUserMessageResponse> PostUserMessageAsync(PostUserMessageRequest request)
+    public async Task<PostUserMessageOutput> PostUserMessageAsync(PostUserMessageInput request)
     {
         var chatRoom = await _chatRoomRepository.GetByIdAsync(Guid.NewGuid());
         chatRoom.PostUserMessage(new ChatMessage(
@@ -50,6 +50,6 @@ public class ChatsService : IChatsService
             await _notificationHandler.HandleAsync(userMessagePostEvent, cts.Token);
         }
 
-        return new PostUserMessageResponse();
+        return new PostUserMessageOutput();
     }
 }

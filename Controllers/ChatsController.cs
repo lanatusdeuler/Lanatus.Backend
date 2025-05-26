@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.Chats;
 using ServiceInterfaces.Chats.Dtos;
+using Controllers.Dtos;
 
 namespace Controllers;
 
@@ -12,15 +12,26 @@ namespace Controllers;
 [ApiController]
 public class ChatsController : ControllerBase
 {
-    private readonly IChatsService _chatsService;
+    private readonly IChatService _chatService;
 
-    public ChatsController(IChatsService chatsService)
-        => _chatsService = chatsService;
+    public ChatsController(IChatService chatService)
+        => _chatService = chatService;
 
     [HttpPost("chatRoom/{id:guid}")]
-    public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(PostUserMessageRequest request)
+    public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(
+        [FromRoute] Guid id,
+        [FromBody] PostUserMessageRequest request
+    )
     {
-        var result = await _chatsService.PostUserMessageAsync(request);
-        return Ok(result);
+        // TODO: requestとrouteからInput作る
+        var input = new PostUserMessageInput();
+
+        // Service呼び出す
+        var output = await _chatService.PostUserMessageAsync(input);
+
+        // TODO: outputからResponse作る
+        var response = new PostUserMessageResponse();
+
+        return Ok(response);
     }
 }

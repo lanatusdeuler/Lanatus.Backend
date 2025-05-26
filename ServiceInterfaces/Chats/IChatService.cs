@@ -5,12 +5,12 @@ namespace ServiceInterfaces.Chats;
 /// <summary>
 /// チャット関連のサービス
 /// </summary>
-public interface IChatsService
+public interface IChatService
 {
     /// <summary>
     /// メッセージを送信する
     /// </summary>
-    /// <param name="request"></param>
+    /// <param name="input"></param>
     /// <returns></returns>
-    Task<PostUserMessageResponse> PostUserMessageAsync(PostUserMessageRequest request);
+    Task<PostUserMessageOutput> PostUserMessageAsync(PostUserMessageInput input);
 }

@@ -1,8 +1,9 @@
+using Domain.Chats.Events;
 using Domain.Chats.Repositories;
 using Domain.Events;
 using Domain.ExternalServices;
 
-namespace Domain.Chats.Events;
+namespace ServiceImplementations.Chats.Events;
 
 public class UserMessagePostedHandler : INotificationHandler<UserMessagePosted>
 {
@@ -24,6 +25,5 @@ public class UserMessagePostedHandler : INotificationHandler<UserMessagePosted>
     public async Task HandleAsync(UserMessagePosted notification, CancellationToken ct)
     {
         var chatRoom = await _chatRoomRepository.GetByIdAsync(notification.AggregateId);
-        
     }
 }

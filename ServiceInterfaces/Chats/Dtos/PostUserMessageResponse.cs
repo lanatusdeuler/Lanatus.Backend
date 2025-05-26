@@ -1,6 +1,6 @@
 namespace ServiceInterfaces.Chats.Dtos;
 
-public class PostUserMessageResponse
+public class PostUserMessageOutput
 {
 
 }

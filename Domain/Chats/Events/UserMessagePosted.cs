@@ -1,3 +1,5 @@
+using Domain.Events;
+
 namespace Domain.Chats.Events;
 
 /// <summary>

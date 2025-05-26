@@ -8,7 +8,7 @@ namespace Domain.Chats;
 /// </summary>
 public class ChatRoom
 {
-    public Collection<UserMessagePosted> Events = [];
+    public Collection<UserMessagePosted> Events { get; } = [];
 
     /// <summary>
     /// 会話部屋の識別子
