@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.Chats;
 using ServiceInterfaces.Chats.Dtos;
 using Controllers.Dtos;
+using Microsoft.Extensions.Options;
+using Infrastructures.Configures;
 
-namespace Controllers;
+namespace Applications;
 
 /// <summary>
 /// チャット関連のコントローラ
@@ -12,10 +14,10 @@ namespace Controllers;
 [ApiController]
 public class ChatsController : ControllerBase
 {
-    private readonly IChatService _chatService;
+    private readonly AISettings _aiSettings;
 
-    public ChatsController(IChatService chatService)
-        => _chatService = chatService;
+    public ChatsController(IOptions<AISettings> options)
+        => _aiSettings = options.Value;
 
     [HttpPost("chatRoom/{id:guid}")]
     public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(
@@ -23,15 +25,16 @@ public class ChatsController : ControllerBase
         [FromBody] PostUserMessageRequest request
     )
     {
+        Console.WriteLine(_aiSettings.AICredentials);
         // TODO: requestとrouteからInput作る
-        var input = new PostUserMessageInput();
+        // var input = new PostUserMessageInput();
 
-        // Service呼び出す
-        var output = await _chatService.PostUserMessageAsync(input);
+        // // Service呼び出す
+        // var output = await _chatService.PostUserMessageAsync(input);
 
-        // TODO: outputからResponse作る
-        var response = new PostUserMessageResponse();
+        // // TODO: outputからResponse作る
+        // var response = new PostUserMessageResponse();
 
-        return Ok(response);
+        return Ok();
     }
 }

@@ -4,6 +4,7 @@ using Domain.Chats.Repositories;
 using Domain.Events;
 using ServiceInterfaces.Chats;
 using ServiceInterfaces.Chats.Dtos;
+using ChatMessage = Domain.Chats.ChatMessage;
 
 namespace ServiceImplementations.Chats;
 
