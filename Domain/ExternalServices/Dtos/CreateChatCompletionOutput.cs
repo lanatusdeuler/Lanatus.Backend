@@ -1,4 +1,4 @@
-namespace ServiceInterfaces.Chats.Dtos;
+namespace Domain.ExternalServices.Dtos;
 
 public record CreateChatCompletionOutput
 {

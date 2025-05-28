@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using ServiceInterfaces.Chats;
-using ServiceInterfaces.Chats.Dtos;
 using Controllers.Dtos;
-using Microsoft.Extensions.Options;
-using Infrastructures.Configures;
+using Domain.ExternalServices;
+using Domain.ExternalServices.Dtos;
 
 namespace Applications;
 
@@ -14,10 +12,10 @@ namespace Applications;
 [ApiController]
 public class ChatsController : ControllerBase
 {
-    private readonly AISettings _aiSettings;
+    private readonly IChatCompletionService _chatCompletionService;
 
-    public ChatsController(IOptions<AISettings> options)
-        => _aiSettings = options.Value;
+    public ChatsController(IChatCompletionService chatCompletionService)
+        => _chatCompletionService = chatCompletionService;
 
     [HttpPost("chatRoom/{id:guid}")]
     public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(
@@ -25,7 +23,11 @@ public class ChatsController : ControllerBase
         [FromBody] PostUserMessageRequest request
     )
     {
-        Console.WriteLine(_aiSettings.AICredentials);
+        var response = await _chatCompletionService.CreateChatCompletionAsync(new CreateChatCompletionInput(
+            "gpt-4o",
+            [new("user", "hello")]
+        ));
+
         // TODO: requestとrouteからInput作る
         // var input = new PostUserMessageInput();
 

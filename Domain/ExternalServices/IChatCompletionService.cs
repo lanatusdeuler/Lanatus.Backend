@@ -1,4 +1,4 @@
-using ServiceInterfaces.Chats.Dtos;
+using Domain.ExternalServices.Dtos;
 
 namespace Domain.ExternalServices;
 

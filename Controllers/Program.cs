@@ -1,3 +1,4 @@
+using Domain.ExternalServices;
 using Infrastructures.Configures;
 using Infrastructures.ExternalServices;
 using Microsoft.Extensions.Configuration;
@@ -23,9 +24,9 @@ public class Program
             .Bind(builder.Configuration.GetSection(AISettings.SectionName))
             .ValidateOnStart();
 
-        builder.Services.AddHttpClient<OpenAIChatCompletionService>((serviceProvider, httpClient) =>
+        builder.Services.AddHttpClient<IChatCompletionService, OpenAIChatCompletionService>((serviceProvider, httpClient) =>
         {
-            AISettings settings = serviceProvider
+            var settings = serviceProvider
                 .GetRequiredService<IOptions<AISettings>>()
                 .Value;
 
