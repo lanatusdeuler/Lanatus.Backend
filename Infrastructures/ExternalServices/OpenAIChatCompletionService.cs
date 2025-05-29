@@ -3,7 +3,6 @@ using System.Text;
 using System.Text.Json;
 using Domain.ExternalServices;
 using Domain.ExternalServices.Dtos;
-using Infrastructures.Configures;
 using Infrastructures.ExternalServices.Dtos;
 
 namespace Infrastructures.ExternalServices;

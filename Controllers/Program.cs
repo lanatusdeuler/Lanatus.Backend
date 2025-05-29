@@ -1,9 +1,8 @@
+using System.Net.Http.Headers;
 using Domain.ExternalServices;
 using Infrastructures.Configures;
 using Infrastructures.ExternalServices;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using System.Net.Http.Headers;
 
 namespace Applications;
 

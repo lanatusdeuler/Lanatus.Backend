@@ -11,6 +11,8 @@ indent_style = space
 
 # CSharpのコードスタイル設定
 [*.cs]
+dotnet_diagnostic.IDE0005.severity = warning
+dotnet_sort_system_directives_first = true
 
 # インデントサイズを4に設定
 indent_size = 4
