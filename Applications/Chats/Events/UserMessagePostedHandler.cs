@@ -5,7 +5,7 @@ using Domains.Events;
 
 namespace Applications.Chats.Events;
 
-public class UserMessagePostedHandler : INotificationHandler<UserMessagePosted>
+public class UserMessagePostedHandler : IDomainEventHandler<UserMessagePosted>
 {
     private readonly IChatRoomRepository _chatRoomRepository;
     private readonly IChatCompletionService _chatCompletionService;
@@ -22,8 +22,8 @@ public class UserMessagePostedHandler : INotificationHandler<UserMessagePosted>
         _contextCollectionService = contextCollectionService;
     }
 
-    public async Task HandleAsync(UserMessagePosted notification, CancellationToken ct)
+    public async Task HandleAsync(UserMessagePosted domainEvent, CancellationToken cancellationToken = default)
     {
-        var chatRoom = await _chatRoomRepository.GetByIdAsync(notification.AggregateId);
+        var chatRoom = await _chatRoomRepository.GetByIdAsync(domainEvent.AggregateId);
     }
 }

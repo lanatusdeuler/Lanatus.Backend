@@ -13,7 +13,7 @@ namespace Applications.Chats;
 public class ChatsService : IChatService
 {
     private readonly IChatRoomRepository _chatRoomRepository;
-    private readonly INotificationHandler<UserMessagePosted> _notificationHandler;
+    private readonly IDomainEventHandler<UserMessagePosted> _notificationHandler;
 
     /// <summary>
     /// コンストラクタ
@@ -22,7 +22,7 @@ public class ChatsService : IChatService
     /// <param name="notificationHandler"></param>
     public ChatsService(
         IChatRoomRepository chatRoomRepository,
-        INotificationHandler<UserMessagePosted> notificationHandler
+        IDomainEventHandler<UserMessagePosted> notificationHandler
     )
     {
         _chatRoomRepository = chatRoomRepository;
