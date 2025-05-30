@@ -1,4 +1,4 @@
-namespace Domain.Chats;
+namespace Domains.Chats;
 
 public class ChatMessage
 {

@@ -1,9 +1,9 @@
-using Domain.Chats.Events;
-using Domain.Chats.Repositories;
-using Domain.Events;
-using Domain.ExternalServices;
+using ApplicationInterfaces.ExternalServices;
+using Domains.Chats.Events;
+using Domains.Chats.Repositories;
+using Domains.Events;
 
-namespace ServiceImplementations.Chats.Events;
+namespace Applications.Chats.Events;
 
 public class UserMessagePostedHandler : INotificationHandler<UserMessagePosted>
 {

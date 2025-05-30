@@ -1,6 +1,6 @@
-using Domain.Events;
+using Domains.Events;
 
-namespace Domain.Chats.Events;
+namespace Domains.Chats.Events;
 
 /// <summary>
 /// ユーザがメッセージを投稿した時に発生するドメインイベント

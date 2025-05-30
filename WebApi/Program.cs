@@ -1,10 +1,10 @@
 using System.Net.Http.Headers;
-using Domain.ExternalServices;
+using ApplicationInterfaces.ExternalServices;
 using Infrastructures.Configures;
 using Infrastructures.ExternalServices;
 using Microsoft.Extensions.Options;
 
-namespace Applications;
+namespace WebApi;
 
 /// <summary>
 ///

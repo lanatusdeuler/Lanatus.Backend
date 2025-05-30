@@ -1,4 +1,4 @@
-namespace Domain.Events;
+namespace Domains.Events;
 
 /// <summary>
 /// ドメインイベントを表すインターフェイス

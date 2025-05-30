@@ -1,6 +1,6 @@
-using Domain.ExternalServices.Dtos;
+using ApplicationInterfaces.ExternalServices.Dtos;
 
-namespace Domain.ExternalServices;
+namespace ApplicationInterfaces.ExternalServices;
 
 public interface IChatCompletionService
 {

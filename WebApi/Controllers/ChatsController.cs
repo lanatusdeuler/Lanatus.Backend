@@ -1,9 +1,9 @@
+using ApplicationInterfaces.ExternalServices;
+using ApplicationInterfaces.ExternalServices.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Controllers.Dtos;
-using Domain.ExternalServices;
-using Domain.ExternalServices.Dtos;
+using WebApi.Dtos;
 
-namespace Applications;
+namespace WebApi.Controllers;
 
 /// <summary>
 /// チャット関連のコントローラ
@@ -12,18 +12,16 @@ namespace Applications;
 [ApiController]
 public class ChatsController : ControllerBase
 {
-    private readonly IChatCompletionService _chatCompletionService;
-
-    public ChatsController(IChatCompletionService chatCompletionService)
-        => _chatCompletionService = chatCompletionService;
+    public ChatsController() { }
 
     [HttpPost("chatRoom/{id:guid}")]
     public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(
+        [FromServices] IChatCompletionService chatCompletionService,
         [FromRoute] Guid id,
         [FromBody] PostUserMessageRequest request
     )
     {
-        var response = await _chatCompletionService.CreateChatCompletionAsync(new CreateChatCompletionInput(
+        var response = await chatCompletionService.CreateChatCompletionAsync(new CreateChatCompletionInput(
             "gpt-4o",
             [new("user", "hello")]
         ));

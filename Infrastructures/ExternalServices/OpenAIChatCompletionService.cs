@@ -1,8 +1,8 @@
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
-using Domain.ExternalServices;
-using Domain.ExternalServices.Dtos;
+using ApplicationInterfaces.ExternalServices;
+using ApplicationInterfaces.ExternalServices.Dtos;
 using Infrastructures.ExternalServices.Dtos;
 
 namespace Infrastructures.ExternalServices;
@@ -16,7 +16,7 @@ public class OpenAIChatCompletionService : IChatCompletionService
 
     public async Task<CreateChatCompletionOutput> CreateChatCompletionAsync(CreateChatCompletionInput input)
     {
-        var request = new OpenAIChatCompletionRequest
+        var request = new OpenAIChatCompletionInput
         {
             Model = input.ModelName,
             Messages = input.Messages.Select(message => new OpenAIChatMessage

@@ -1,8 +1,6 @@
-using System;
+namespace ApplicationInterfaces.Chats.Dtos;
 
-namespace ServiceInterfaces.Chats.Dtos;
-
-public class PostUserMessageInput
+public record PostUserMessageInput
 {
 
 }

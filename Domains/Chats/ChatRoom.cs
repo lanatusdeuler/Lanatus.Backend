@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
-using Domain.Chats.Events;
+using Domains.Chats.Events;
 
-namespace Domain.Chats;
+namespace Domains.Chats;
 
 /// <summary>
 /// 会話部屋

@@ -1,4 +1,4 @@
-namespace Domain.Chats.Repositories;
+namespace Domains.Chats.Repositories;
 
 /// <summary>
 /// 会話部屋のリポジトリ

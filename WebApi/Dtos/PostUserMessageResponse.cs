@@ -1,6 +1,6 @@
-namespace Controllers.Dtos;
+namespace WebApi.Dtos;
 
-public class PostUserMessageResponse
+public record PostUserMessageResponse
 {
 
 }

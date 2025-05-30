@@ -1,12 +1,11 @@
-using Domain.Chats;
-using Domain.Chats.Events;
-using Domain.Chats.Repositories;
-using Domain.Events;
-using ServiceInterfaces.Chats;
-using ServiceInterfaces.Chats.Dtos;
-using ChatMessage = Domain.Chats.ChatMessage;
+using ApplicationInterfaces.Chats;
+using ApplicationInterfaces.Chats.Dtos;
+using Domains.Chats.Events;
+using Domains.Chats.Repositories;
+using Domains.Events;
+using ChatMessage = Domains.Chats.ChatMessage;
 
-namespace ServiceImplementations.Chats;
+namespace Applications.Chats;
 
 /// <summary>
 /// チャット関連のサービス

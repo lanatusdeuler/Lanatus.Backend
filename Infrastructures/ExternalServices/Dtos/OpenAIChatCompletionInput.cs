@@ -5,7 +5,7 @@ namespace Infrastructures.ExternalServices.Dtos;
 /// <summary>
 /// OpenAIのCreateChatCompletionリクエスト
 /// </summary>
-public record OpenAIChatCompletionRequest
+public record OpenAIChatCompletionInput
 {
     /// <summary>
     /// モデル名

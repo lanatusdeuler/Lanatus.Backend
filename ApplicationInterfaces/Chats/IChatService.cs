@@ -1,6 +1,6 @@
-using ServiceInterfaces.Chats.Dtos;
+using ApplicationInterfaces.Chats.Dtos;
 
-namespace ServiceInterfaces.Chats;
+namespace ApplicationInterfaces.Chats;
 
 /// <summary>
 /// チャット関連のサービス
