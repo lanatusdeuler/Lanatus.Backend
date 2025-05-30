@@ -11,6 +11,8 @@ indent_style = space
 
 # CSharpのコードスタイル設定
 [*.cs]
+dotnet_diagnostic.IDE0005.severity = warning
+dotnet_sort_system_directives_first = true
 
 # インデントサイズを4に設定
 indent_size = 4
@@ -300,23 +302,11 @@ dotnet_style_qualification_for_event = false:warning
 # --------------------------------------------------
 
 # 組み込み型を宣言する時はvarを使う
-csharp_style_var_for_built_in_types = true:warning
+# csharp_style_var_for_built_in_types = true:warning
 # 宣言式の右側で型が示されている時はvarを使う
-csharp_style_var_when_type_is_apparent = true:warning
+# csharp_style_var_when_type_is_apparent = true:warning
 # 別のコードスタイルでオーバーライドされない限り、明示的な型ではなくvarを使う
-csharp_style_var_elsewhere = true:warning
-
-
-# --------------------------------------------------
-# 明示的な型を使うかvarを使うかの設定
-# --------------------------------------------------
-
-# 組み込み型を宣言する時はvarを使う
-csharp_style_var_for_built_in_types = true:warning
-# 宣言式の右側で型が示されている時はvarを使う
-csharp_style_var_when_type_is_apparent = true:warning
-# 別のコードスタイルでオーバーライドされない限り、明示的な型ではなくvarを使う
-csharp_style_var_elsewhere = true:warning
+# csharp_style_var_elsewhere = true:warning
 
 
 # --------------------------------------------------

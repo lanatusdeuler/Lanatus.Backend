@@ -1,0 +1,18 @@
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "text": "This workspace is in a dev container running on \"Debian GNU/Linux 12 (bookworm)\".\n\nUse `\"$BROWSER\" <url>` to open a webpage in the host's default browser.\n\nSome of the command line tools available on the `PATH`: `apt`, `dpkg`, `git`, `curl`, `wget`, `find`, `grep`, `tar`, `gzip`"
+    }
+  ],
+  "csharp.inlayHints.enableInlayHintsForTypes": true,
+  "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+  "dotnet.inlayHints.enableInlayHintsForParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForIndexerParameters": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
+  "dotnet.formatting.organizeImportsOnFormat": true,
+  "csharp.format.enable": true,
+}
