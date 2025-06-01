@@ -1,8 +1,7 @@
-using System.Net.Http.Headers;
 using ApplicationInterfaces.ExternalServices;
 using Infrastructures.Configures;
 using Infrastructures.ExternalServices;
-using Microsoft.Extensions.Options;
+using Infrastructures.ExternalServices.Dtos;
 
 namespace WebApi;
 
@@ -23,16 +22,21 @@ public class Program
             .Bind(builder.Configuration.GetSection(AISettings.SectionName))
             .ValidateOnStart();
 
-        builder.Services.AddHttpClient<IChatCompletionService, OpenAIChatCompletionService>((serviceProvider, httpClient) =>
-        {
-            var settings = serviceProvider
-                .GetRequiredService<IOptions<AISettings>>()
-                .Value;
+        builder.Services.AddOptions<GoogleSearchSettings>()
+            .Bind(builder.Configuration.GetSection(GoogleSearchSettings.SectionName))
+            .ValidateOnStart();
 
-            httpClient.BaseAddress = settings.AICredentials.EndPoint;
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", settings.AICredentials.Credential);
-        });
+        builder.Services.AddOptions<BingSearchSettings>()
+            .Bind(builder.Configuration.GetSection(BingSearchSettings.SectionName))
+            .ValidateOnStart();
+
+        builder.Services.AddTransient<GoogleSearchQueryBuilder>();
+
+        builder.Services.AddHttpClient<BingSearchService>();
+        builder.Services.AddHttpClient<GoogleSearchService>();
+        builder.Services.AddTransient<WebSearchServiceFactory>();
+
+        builder.Logging.AddConsole();
 
         var app = builder.Build();
         if (app.Environment.IsDevelopment())
