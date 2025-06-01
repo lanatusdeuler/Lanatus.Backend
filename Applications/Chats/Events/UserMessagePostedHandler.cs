@@ -9,17 +9,14 @@ public class UserMessagePostedHandler : IDomainEventHandler<UserMessagePosted>
 {
     private readonly IChatRoomRepository _chatRoomRepository;
     private readonly IChatCompletionService _chatCompletionService;
-    private readonly IContextCollectionService _contextCollectionService;
 
     public UserMessagePostedHandler(
         IChatRoomRepository chatRoomRepository,
-        IChatCompletionService chatCompletionService,
-        IContextCollectionService contextCollectionService
+        IChatCompletionService chatCompletionService
     )
     {
         _chatRoomRepository = chatRoomRepository;
         _chatCompletionService = chatCompletionService;
-        _contextCollectionService = contextCollectionService;
     }
 
     public async Task HandleAsync(UserMessagePosted domainEvent, CancellationToken cancellationToken = default)

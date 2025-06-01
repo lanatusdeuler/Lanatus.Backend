@@ -1,5 +1,7 @@
 using ApplicationInterfaces.ExternalServices;
 using ApplicationInterfaces.ExternalServices.Dtos;
+using ApplicationInterfaces.ExternalServices.Dtos.Enums;
+using Infrastructures.ExternalServices;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Dtos;
 
@@ -12,29 +14,19 @@ namespace WebApi.Controllers;
 [ApiController]
 public class ChatsController : ControllerBase
 {
-    public ChatsController() { }
-
-    [HttpPost("chatRoom/{id:guid}")]
-    public async Task<ActionResult<PostUserMessageResponse>> PostUserMessageAsync(
-        [FromServices] IChatCompletionService chatCompletionService,
-        [FromRoute] Guid id,
-        [FromBody] PostUserMessageRequest request
+    [HttpGet("test")]
+    public async Task TestAsync(
+        [FromServices] WebSearchServiceFactory factory
     )
     {
-        var response = await chatCompletionService.CreateChatCompletionAsync(new CreateChatCompletionInput(
-            "gpt-4o",
-            [new("user", "hello")]
-        ));
+        var service = factory.Create(WebSearchEngineType.Google);
+        var service2 = factory.Create(WebSearchEngineType.Google);
 
-        // TODO: requestとrouteからInput作る
-        // var input = new PostUserMessageInput();
+        var response = await service.SearchAsync(new WebSearchInput
+        {
+            Query = "ほげーたって何"
+        });
 
-        // // Service呼び出す
-        // var output = await _chatService.PostUserMessageAsync(input);
-
-        // // TODO: outputからResponse作る
-        // var response = new PostUserMessageResponse();
-
-        return Ok();
+        Console.WriteLine(response.EngineType);
     }
 }

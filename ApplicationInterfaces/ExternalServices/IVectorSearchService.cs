@@ -1,5 +1,6 @@
 namespace ApplicationInterfaces.ExternalServices;
 
-public interface IContextCollectionService
+public interface IVectorSearchService
 {
+
 }
