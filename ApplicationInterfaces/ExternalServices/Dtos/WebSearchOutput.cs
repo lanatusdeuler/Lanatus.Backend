@@ -2,7 +2,7 @@ using ApplicationInterfaces.ExternalServices.Dtos.Enums;
 
 namespace ApplicationInterfaces.ExternalServices.Dtos;
 
-public record class WebSearchOutput
+public record WebSearchOutput
 {
     public string Query { get; }
 

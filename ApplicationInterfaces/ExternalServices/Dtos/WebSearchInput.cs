@@ -4,7 +4,7 @@ namespace ApplicationInterfaces.ExternalServices.Dtos;
 
 public record WebSearchInput
 {
-    public required string Query { get; init; }
+    public string Query { get; }
 
     public int PageNumber { get; } = 1;
 
@@ -21,4 +21,19 @@ public record WebSearchInput
     public DateTime? FromDate { get; }
 
     public Dictionary<string, string>? CustomHeaders { get; }
+
+    public WebSearchInput(
+        string query,
+        int pageNumber = 1,
+        int pageSize = 10,
+        string language = "ja",
+        string region = "JP",
+        WebSearchFileType webSearchFileType = WebSearchFileType.All,
+        WebSearchSortOrder webSearchSortOrder = WebSearchSortOrder.Relevance,
+        DateTime? fromDate = null,
+        Dictionary<string, string>? customHeaders = null
+    )
+    {
+
+    }
 }
