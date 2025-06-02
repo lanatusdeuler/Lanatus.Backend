@@ -1,4 +1,3 @@
-using ApplicationInterfaces.ExternalServices;
 using Infrastructures.Configures;
 using Infrastructures.ExternalServices;
 using Infrastructures.ExternalServices.Dtos;
@@ -34,7 +33,21 @@ public class Program
 
         builder.Services.AddHttpClient<BingSearchService>();
         builder.Services.AddHttpClient<GoogleSearchService>();
-        builder.Services.AddTransient<WebSearchServiceFactory>();
+        builder.Services.AddHttpClient<QdrantSearchService>();
+
+        builder.Services.AddSingleton<WebSearchServiceFactory>();
+        builder.Services.AddSingleton<VectorSearchServiceFactory>();
+
+        builder.Services.AddTransient<WebSearchContextProvider>();
+        builder.Services.AddTransient<VectorSearchContextProvider>();
+        builder.Services.AddTransient<LoggingContextProvider>();
+        builder.Services.AddTransient<ContextProviderBuilder>(sp =>
+            new ContextProviderBuilder(
+                () => sp.GetRequiredService<WebSearchContextProvider>(),
+                () => sp.GetRequiredService<VectorSearchContextProvider>(),
+                () => sp.GetRequiredService<LoggingContextProvider>()
+            )
+        );
 
         builder.Logging.AddConsole();
 

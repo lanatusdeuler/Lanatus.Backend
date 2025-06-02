@@ -1,9 +1,5 @@
-using ApplicationInterfaces.ExternalServices;
-using ApplicationInterfaces.ExternalServices.Dtos;
-using ApplicationInterfaces.ExternalServices.Dtos.Enums;
 using Infrastructures.ExternalServices;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Dtos;
 
 namespace WebApi.Controllers;
 
@@ -16,17 +12,26 @@ public class ChatsController : ControllerBase
 {
     [HttpGet("test")]
     public async Task TestAsync(
-        [FromServices] WebSearchServiceFactory factory
+        [FromServices] ContextProviderBuilder builder
     )
     {
-        var service = factory.Create(WebSearchEngineType.Google);
-        var service2 = factory.Create(WebSearchEngineType.Google);
+        var provider = builder
+            .AddVectorSearch()
+            .AddWebSearch()
+            .Build();
 
-        var response = await service.SearchAsync(new WebSearchInput
+        var baseProvider = builder
+            .AddVectorSearch()
+            .AddWebSearch()
+            .UseLogging("🔁別のProvider")
+            .AddProvider(provider)
+            .Build();
+
+        var context = await baseProvider.GetContextAsync();
+
+        foreach (var item in context.ContextItems)
         {
-            Query = "ほげーたって何"
-        });
-
-        Console.WriteLine(response.EngineType);
+            Console.WriteLine($"{item.SourceType}: {item.Content}");
+        }
     }
 }
